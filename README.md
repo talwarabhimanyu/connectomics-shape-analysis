@@ -1,1 +1,1 @@
-# connectomics-shape-analysis
+# 3D Shape Analysis for Connectomics
