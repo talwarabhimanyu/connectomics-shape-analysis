@@ -13,14 +13,18 @@ layout: default
 
       <h1>3D Shape Analysis for Connectomics</h1>
 
-      <p>During the Spring semester of 2019, I had the opportunity to work on a research project with Prof. Hanspeter Pfister's <a href="https://vcg.seas.harvard.edu">Visual Computing Group</a> at Harvard, under the guidance of Donglai Wei and Zudi Lin. Our work involves analysis of 3D models of cellular organelles (such as neurons) inside the brain, with the aim of explaining the variance in their shapes. Our work answers questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? What primitives are those? Towards that end, we developed a simple shape descriptor for these complex 3D shapes, which provides an intuitive idea of complex 3D shapes, and at the same time preserves adequate details to be used for shape sensitive tasks such as shape matching and retrieval.</p>
+      <p>During the Spring semester of 2019, I had the opportunity to work on a research project with Prof. Hanspeter Pfister's <a href="https://vcg.seas.harvard.edu">Visual Computing Group</a> at Harvard, under the guidance of Donglai Wei and Zudi Lin. Our work involves analysis of 3D models of cellular organelles (such as neurons) inside the brain, with the aim of explaining the variance in their shapes. 
+      
+      Our work answers questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? What primitives are those? Towards that end, we developed a simple shape descriptor for these complex 3D shapes, which provides an intuitive idea of complex 3D shapes, and at the same time preserves adequate details to be used for shape sensitive tasks such as shape matching and retrieval. We submitted our work to a peer reviewed conference and we are awaiting feedback. </p>
 
 <h2 id="background">Background</h2>
 Wikipedia defines Connectomics as:
 <blockquote>
 	<p> ... the production and study of connectomes: comprehensive maps of connections within an organism's nervous system, typically its brain or eye. </p>
 </blockquote>
-Connectomics is now done at the nano-scale level, i.e. the resolution at which we view parts of the brain is now measured in nanometers, and we can tell apart two points which are a few nanometers (nm) apart. For this project I dealt with typical resolutions of 60nm. There are two implications of sush a high resolution: (1) 
+Connectomics is now done at nano-scale resolution, i.e. we can tell apart two points of an organelle which are just a few nanometers (nm) apart. For this project I dealt with typical resolutions of 60nm. One implication of the availability of such high resolution data is that we can now observe never-seen-before rich details of organelle. 
+
+
 <h2 id="problem">Problem Statement</h2>
 
 <blockquote>
