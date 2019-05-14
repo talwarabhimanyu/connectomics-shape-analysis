@@ -11806,7 +11806,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I discuss two such shape descriptors below: (1) 2D Distance Tranform Profile, and (2) Heat Kernel Signature. The latter produced better results than the former, however it is not as intuitive a shape descriptor as the Reduced Graph, which we finally settled on.</p>
+<p>I implemented two such shape descriptors which I discuss below: (1) 2D Distance Tranform Profile, and (2) Heat Kernel Signature. The latter produced better results than the former, however it is not as intuitive a shape descriptor as the Reduced Graph, which we finally settled on.</p>
 
 </div>
 </div>
@@ -11815,7 +11815,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-K-Means-Clustering-on-2D-Distance-Transform-Profil">1. K-Means Clustering on 2D Distance Transform Profil<a class="anchor-link" href="#1.-K-Means-Clustering-on-2D-Distance-Transform-Profil">&#182;</a></h2><h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p><strong>Intuition</strong> The simple intuition here is that since the organelle we are working with (mitochondria in particular) has a tubular structure across specimens in the dataset, perhaps we could use the thickness of that tube at each point along the tube's length, as a shape descriptor.</p>
+<h2 id="1.-K-Means-Clustering-on-2D-Distance-Transform-Profile">1. K-Means Clustering on 2D Distance Transform Profile<a class="anchor-link" href="#1.-K-Means-Clustering-on-2D-Distance-Transform-Profile">&#182;</a></h2><h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p><strong>Intuition</strong> The simple intuition here is that since the organelle we are working with (mitochondria in particular) has a tubular structure across specimens in the dataset, perhaps we could use the thickness of that tube at each point along the tube's length, as a shape descriptor.</p>
 <p><strong>Process</strong> I followed the steps below for this approach:</p>
 <ol>
 <li>First compute the shadow of a 3D shape on XY plane. </li>
