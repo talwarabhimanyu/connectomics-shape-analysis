@@ -11797,7 +11797,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img height="250" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/star-mitos.png"></p>
+<p><img height="225" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/star-mitos.png"></p>
 <p style="font-family:times;text-align:center;"> <em>Left and Center Columns: Two mitochondrias with similar topologies but different shapes. <br> Right: A shape descriptor which captures topological details.</em></p>
 </div>
 </div>
@@ -11812,12 +11812,21 @@ div#notebook {
 $$
 \mathbb{V} = (p_1, \cdots, p_V)
 $$
-Let the points in the shape be represented by $X$, and for each $x \in X$, let $\text{HKS}(x)$ denote the pointwise HKS. We want to represent each point $x$ by a feature descriptor $\theta(x) = (\theta_1(x), \cdots, \theta_V(x))$ where:</p>
+Let the points in the shape be represented by $X$, and for each $x \in X$, let $\text{HKS}(x)$ denote the pointwise HKS. We want to represent each point $x$ by a <em>feature descriptor</em> $\theta(x) = (\theta_1(x), \cdots, \theta_V(x))$ where:</p>
 <p>$$
 \theta_i(x) = ce^{\frac{\lVert \text{HKS}(x) - p_i\rVert_2^2} {2\sigma^2}}
 $$</p>
-<p>Here $c(x)$ is a normalization constant which ensures $\lVert \theta(x) \rVert_2 = 1$ and $\sigma$ is a hyperparameter.</p>
+<p>Here $c(x)$ is a normalization constant which ensures $\lVert \theta(x) \rVert_2 = 1$ and $\sigma$ is a hyperparameter. Finally, to get the Bag of Feature shape descriptor for the whole shape, I took the average of feature descriptors $\theta(x) \space \forall x \in X$.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img height="225" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/hks-bow.png"></p>
+<p style="font-family:times;text-align:center;"> <em>Left and Center Columns: Two mitochondrias with similar topologies but different shapes. <br> Right: A shape descriptor which captures topological details.</em></p>
 </div>
 </div>
 </div>
