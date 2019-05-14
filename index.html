@@ -1,22 +1,20 @@
 ---
 layout: default
---- 
+--- 	
 <body>
     <nav>
         <a href="/connectomics-shape-analysis/">Introduction</a>
-                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/other-descriptors.html">Other Shape Descriptors</a>
+                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/other-descriptors.html">Heat Kernel Signature</a>
                               &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/connectomics-main.html">Graph Reduction Algorithm</a>
 
 
 
     </nav>        
       <h1>3D Shape Analysis for Connectomics</h1>
-<p style="font-family:times;"> Advances in electron microscopy have made available 3D models of cellular organelle with never-seen-before details. The scientific community is now making rapid advances in parsing these rich details and helping us understand more about what goes on at the cellular level. This project focuses on dense 3D models of mitochondria and pyramidal neurons and attempts to make a tiny contribution towards shape analysis of these organelle.
+      <p style="font-family:times;"> Advances in electron microscopy have made available 3D models of cellular organelle with never-seen-before details. The scientific community is now making rapid advances in parsing these rich details and helping us understand more about what goes on at nano-scale level. This project focuses on dense 3D models of mitochondria and pyramidal neurons and attempts to make a tiny contribution towards shape analysis of these organelle. I'm grateful to my advisors <a href="https://donglaiw.github.io/">Donglai Wei</a> and Zudi Lin at Prof. Hanspeter Pfister's lab, the <a href="https://vcg.seas.harvard.edu">Visual Computing Group</a> at Harvard, for giving me the opportuntiy to work on this project, and for their guidance and patience throughout the project.
 
       <h2>Project Background</h1>
-      <p style="font-family:times;">During the Spring semester of 2019, I had the opportunity to work on a research project with Prof. Hanspeter Pfister's <a href="https://vcg.seas.harvard.edu">Visual Computing Group</a> at Harvard, under the guidance of Donglai Wei and Zudi Lin. Our work involves analysis of 3D models of cellular organelles (such as neurons) inside the brain, with the aim of explaining the variance in their shapes. </p> 
-      
-      <p style="font-family:times;"> Our work answers questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? Towards that end, we developed a simple shape descriptor, which provides an intuitive picture of complex 3D shapes, and at the same time preserves adequate topological details to be used for shape sensitive tasks such as shape matching and retrieval. We have submitted our work to a peer reviewed conference and are awaiting feedback. </p>
+      <p style="font-family:times;">Our work involves analysis of 3D models of cellular organelles (such as neurons) inside the brain, with the aim of explaining the variance in their shapes. We attempt to answer questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? Towards that end, we developed a simple shape descriptor, which provides an intuitive picture of complex 3D shapes, and at the same time preserves adequate topological details to be used for shape sensitive tasks such as shape matching and retrieval. We have submitted our work to a peer reviewed conference and are awaiting feedback. </p>
 
 <h2 id="background">Big-Picture Objective</h2>
 <p style="font-family:times;"> Connectomics is defined by Wikipedia as:</p>
@@ -46,6 +44,6 @@ layout: default
 <img height="150" width="600" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/pipeline.png">
 <figcaption style="font-family:times;"><em>Pipeline for extracting Topological Nomenclature of a 3D Organelle Model (Source: Our paper.)</em></figcaption>
 </figure>
-<p style="font-family:times;"> Before settling on the Reduced Graph shape descriptor, I tried some existing approaches, which can be seen here: <a href="/connectomics-shape-analysis/other-descriptors.html">[Other Shape Descriptors]</a>. The details of the Graph Reduction algorithm can be found here: <a href="/connectomics-shape-analysis/connectomics-main.html">[Graph Reduction Algorithm]</a>.
+<p style="font-family:times;"> Before settling on the Reduced Graph shape descriptor, I tried some existing approaches, which can be seen here: <a href="/connectomics-shape-analysis/other-descriptors.html">[Heat Kernel Signature]</a>. The details of the Graph Reduction algorithm can be found here: <a href="/connectomics-shape-analysis/connectomics-main.html">[Graph Reduction Algorithm]</a>.
 
 </body>
