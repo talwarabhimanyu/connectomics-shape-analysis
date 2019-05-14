@@ -15,12 +15,8 @@ layout: default
 
       <p style="font-family:times;">Understanding the variance in shapes of an organelle like mitochondria may be seen as the first step towards relating shape to biological function. In this project we attempted to answer questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? Towards that end, we have developed a simple shape descriptor called the "Reduced Graph", which provides an intuitive picture of complex 3D shapes, and at the same time preserves adequate topological details to be used for shape sensitive tasks such as shape matching and retrieval. we also proposed a nomenclature scheme for our Reduced Graph descriptor. We have submitted our work to a peer reviewed conference and are awaiting feedback. My contribution to the project has been designing and implementing an algorithm for extracting the Reduced Graph from a shape.</p>
 
-<h2 id="background">Background</h2>
-<p style="font-family:times;"> Connectomics is defined by Wikipedia as:</p>
-<blockquote>
-	<p style="font-family:times;"> ... the production and study of connectomes: comprehensive maps of connections within an organism's nervous system, typically its brain or eye. </p>
-</blockquote>
-<p style="font-family:times;"> Connectomics is now done at nano-scale resolution, i.e. we can tell apart two points of an organelle which are just a few nanometers (nm) apart. For this project I dealt with typical resolutions of 60nm. One implication of the availability of such high resolution data is that we can now observe never-seen-before details of organelle. Below are two examples of such rich 3D models. </p>
+<h2 id="dataset">Dataset</h2>
+<p style="font-family:times;"> Connectomics is now done at nano-scale resolution, i.e. we can tell apart two points of an organelle which are just a few nanometers (nm) apart. For this project I dealt with typical resolutions of 60nm. One implication of the availability of such high resolution data is that we can now observe never-seen-before details of organelle. Below are two examples of such rich 3D models from the dataset I worked with. </p>
 
 <figure style="text-align: center;style="font-family:times;"">
 <img height="200" width="200" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/mito-sample.png">
@@ -30,14 +26,13 @@ layout: default
 
 <p style="font-family:times;"> Given these types of complex 3D shapes, our big picture goal is to come up with a shape descriptor which captures the essential features of a shape (such as connectivity between two points on the shape, length of paths between two points, loops etc.) and discards non-essential features (such as spines on a neuron's dendrites, loops with a tiny circumference in mitochondria). </p>
 
-<h2 id="problem">Problem Statement</h2>
+<h2 id="problem">Problem Statement and Proposed Solution</h2>
 <p style="font-family:times;"> The aim is twofolds: </p>
 <ul>
 	<li style="font-family:times;">Propose a shape descriptor which captures essential topological details of a shape and discards non-essential features.</li>
 	<li style="font-family:times;">Propose a method to extract that descriptor for two datasets comprised of 3D models of mitochondria and pyramidal neurons.</li>
 </ul>
 
-<h2 id="solution">Proposed Solution & My Contribution</h2>
 <p style="font-family:times;"> The figure below shows the pipeline developed by our team, in which we start with a 3D voxelized model of an organelle ("3D Shape" in the figure), extract its shape descriptor (the "Reduced Graph"), and propose a nomenclature scheme for naming such Reduced Graphs (the "Topological Nomenclature"). My contribution to this pipeline has been designing and implementing the Graph Reduction algorithm.</p>
 <figure style="text-align: center;style="font-family:times;"">
 <img height="150" width="600" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/pipeline.png">
