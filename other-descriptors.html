@@ -11797,7 +11797,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img height="225" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/star-mitos.png"></p>
+<p><img height="225" width="750" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/star-mitos.png"></p>
 <p style="font-family:times;text-align:center;"> <em>Left and Center Columns: Two mitochondrias with similar topologies but different shapes. <br> Right: A shape descriptor which captures topological details.</em></p>
 </div>
 </div>
@@ -11806,7 +11806,45 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Heat-Kernel-Signature1">2. Heat Kernel Signature<sup>1</sup><a class="anchor-link" href="#2.-Heat-Kernel-Signature1">&#182;</a></h1><p><strong>Intuition:</strong> If I place a heat source on the tip of my right hand's thumb, the amount of heat that travels to the corresponding point on my left thumb, in some time $T$, will be invariant under many different poses which my body can take (e.g. me standing with my hand stretched out or stretched up). The Heat Kernel Signature (HKS) is a shape descriptor proposed by Sun et al<sup>1</sup> which is based on this invariance property of heat diffusion over a surface.</p>
+<p>I discuss two such shape descriptors below: (1) 2D Distance Tranform Profile, and (2) Heat Kernel Signature. The latter produced better results than the former, however it is not as intuitive a shape descriptor as the Reduced Graph, which we finally settled on.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-K-Means-Clustering-on-2D-Distance-Transform-Profil">1. K-Means Clustering on 2D Distance Transform Profil<a class="anchor-link" href="#1.-K-Means-Clustering-on-2D-Distance-Transform-Profil">&#182;</a></h2><h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p><strong>Intuition</strong> The simple intuition here is that since the organelle we are working with (mitochondria in particular) has a tubular structure across specimens in the dataset, perhaps we could use the thickness of that tube at each point along the tube's length, as a shape descriptor.</p>
+<p><strong>Process</strong> I followed the steps below for this approach:</p>
+<ol>
+<li>First compute the shadow of a 3D shape on XY plane. </li>
+<li>Compute the Distance Transform of this 2D shadow image. I used the <em>medial_axis</em> function in Scikit-Image. The Distance Transform is basically a measure of the "thickness" of a 2D shape.<ul>
+<li>Medial Axis is a 1 pixel wide "skeleton" inside a 2D shape with the property that it has more than one closest points on the boundary.</li>
+<li>Distance Transform computes, for each point on the Medial Axis, the closest distance of that point from the 2D shape's boundary.</li>
+</ul>
+</li>
+<li>Use the Distance Transform as a shape descriptor and compute K-Means clusters on the set of shapes. The value $k=5$ gave the most visually appealing results.</li>
+</ol>
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>The Figure below shows the clusters created for a subset of the Mitochondria dataset. We can observe that even this simple clustering method generates clusters with high intra-cluster homegeniety. That said, we can spot some errors, e.g. look at the mitochondria on top-right of Cluster 4. It clearly doesn't belong here. I was able to resolve such errors with the help of a better shape descriptor (the Heat Kernel Signature), which I discuss below.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img height="1000" width="650" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/1d-clusters.png"></p>
+<p style="font-family:times;text-align:center;"> <em>Five clusters of mitochondria shapes created using K-means on 2D Distance Transform Profiles</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2.-Heat-Kernel-Signature1">2. Heat Kernel Signature<sup>1</sup><a class="anchor-link" href="#2.-Heat-Kernel-Signature1">&#182;</a></h1><h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p><strong>Intuition:</strong> If I place a heat source on the tip of my right hand's thumb, the amount of heat that travels to the corresponding point on my left thumb, in some time $T$, will be invariant under many different poses which my body can take (e.g. me standing with my hand stretched out or stretched up). The Heat Kernel Signature (HKS) is a shape descriptor proposed by Sun et al<sup>1</sup> which is based on this invariance property of heat diffusion over a surface.</p>
 <p><strong>HKS Based Shape Matching:</strong> I implemented the HKS based shape matching algorithm proposed by Bronstein et al. in their paper <em>"Shape google: Geometric words and expressions for invariant shape retrieval"</em><sup>2</sup>. The basic idea is to compute the HKS for each point of each shape in a set of shapes, and then learn an HKS "Vocabulary" of some size $V$. This is done by clusterin over the HKS' to create $V$ clusters, and use their centroids as words in the HKS Vocabulary. I used off-the shelf code for HKS generation, and implemented the clustering and shape retrieval parts myself.</p>
 <p>Once an HKS Vocabulary has been learnt, we represent each shape as a <em>Bag of Features</em>. Specifically, let the Vocabulary be represented by:
 $$
@@ -11817,6 +11855,8 @@ Let the points in the shape be represented by $X$, and for each $x \in X$, let $
 \theta_i(x) = ce^{\frac{\lVert \text{HKS}(x) - p_i\rVert_2^2} {2\sigma^2}}
 $$</p>
 <p>Here $c(x)$ is a normalization constant which ensures $\lVert \theta(x) \rVert_2 = 1$ and $\sigma$ is a hyperparameter. Finally, to get the Bag of Feature shape descriptor for the whole shape, I took the average of feature descriptors $\theta(x) \space \forall x \in X$.</p>
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>The Figure below shows the results from HKS based Bag of Feature clustering. I use a Vocabular of size 8 for this experiment. The left panel plots the shape descriptor $\theta$ (a vector of length 8) for the 8 mitochondria shown in the right panel. One can observe that all the specimens which look tubular in nature have a similar $\theta$ profile (shown in blue), while those which look spherical have profiles similar to each other (shown in red).</p>
+<p>Furthermore, this approach correctly clusters specimen ID 643 (bottom right in the right panel), along with the other tubular mitochondrias. However this specimen was incorrectly clustered in Cluster 4 using the 2D Distance Transform Profile (see the plot above).</p>
 
 </div>
 </div>
@@ -11825,8 +11865,8 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img height="225" src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/hks-bow.png"></p>
-<p style="font-family:times;text-align:center;"> <em>Left and Center Columns: Two mitochondrias with similar topologies but different shapes. <br> Right: A shape descriptor which captures topological details.</em></p>
+<p><img src="https://github.com/talwarabhimanyu/connectomics-shape-analysis/raw/master/images/hks-bow.png"></p>
+<p style="font-family:times;text-align:center;"> <em>Left Panel: Shows HKS-Bag of Features shape descriptor using a size 8 Vocabulary for mitochondria specimen shown in the right panel. <br> Right Panel: Shows the 3D models of the eight mitochondria specimens.</em></p>
 </div>
 </div>
 </div>
