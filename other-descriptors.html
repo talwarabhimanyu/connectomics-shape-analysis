@@ -11788,7 +11788,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3D-Shape-Analysis-for-Connectomics:-Other-Shape-Descriptors">3D Shape Analysis for Connectomics: Other Shape Descriptors<a class="anchor-link" href="#3D-Shape-Analysis-for-Connectomics:-Other-Shape-Descriptors">&#182;</a></h1><p>The overarching objective is to come up with a shape descriptor which captures topological details (such as connections between two points in the shape, the distance between two points). For instance, in the Figure below, if we are to stretch out the two mitochondria (left and center columns), we will end up with a star looking shape (right column). So a desirable shape descriptor will be able to identify that the two mitochondria shown in this figure are similar in topology.</p>
+<p><a href="https://talwarabhimanyu.github.io/connectomics-shape-analysis/">[Go back to main page.]</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3D-Shape-Analysis-for-Connectomics:-Different-Shape-Descriptors">3D Shape Analysis for Connectomics: Different Shape Descriptors<a class="anchor-link" href="#3D-Shape-Analysis-for-Connectomics:-Different-Shape-Descriptors">&#182;</a></h1><p>The overarching objective is to come up with a shape descriptor which captures topological details (such as connections between two points in the shape, the distance between two points). For instance, in the Figure below, if we are to stretch out the two mitochondria (left and center columns), we will end up with a star looking shape (right column). So a desirable shape descriptor will be able to identify that the two mitochondria shown in this figure are similar in topology.</p>
 
 </div>
 </div>
@@ -11856,7 +11865,7 @@ Let the points in the shape be represented by $X$, and for each $x \in X$, let $
 $$</p>
 <p>Here $c(x)$ is a normalization constant which ensures $\lVert \theta(x) \rVert_2 = 1$ and $\sigma$ is a hyperparameter. Finally, to get the Bag of Feature shape descriptor for the whole shape, I took the average of feature descriptors $\theta(x) \space \forall x \in X$.</p>
 <h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>The Figure below shows the results from HKS based Bag of Feature clustering. I use a Vocabular of size 8 for this experiment. The left panel plots the shape descriptor $\theta$ (a vector of length 8) for the 8 mitochondria shown in the right panel. One can observe that all the specimens which look tubular in nature have a similar $\theta$ profile (shown in blue), while those which look spherical have profiles similar to each other (shown in red).</p>
-<p>Furthermore, this approach correctly clusters specimen ID 643 (bottom right in the right panel), along with the other tubular mitochondrias. However this specimen was incorrectly clustered in Cluster 4 using the 2D Distance Transform Profile (see the plot above).</p>
+<p>Furthermore, this approach correctly clusters specimen ID 643 (bottom right in the right panel), along with the other tubular mitochondrias (see its HKS Bag of Feature vector as the black dotted line in left panel). However this specimen was incorrectly clustered in Cluster 4 using the 2D Distance Transform Profile (see the plot above).</p>
 
 </div>
 </div>
