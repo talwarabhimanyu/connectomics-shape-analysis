@@ -4,8 +4,8 @@ layout: default
 <body>
     <nav>
         <a href="/connectomics-shape-analysis/">Introduction</a>
-                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/other-descriptors.html">Heat Kernel Signature</a>
-                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/connectomics-main.html">Graph Reduction Algorithm</a>
+                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/other-descriptors.html">Different Shape Descriptors</a>
+                              &nbsp;|&nbsp;<a href="/connectomics-shape-analysis/connectomics-main.html">Reduced Graph Descriptor</a>
 
 
 
@@ -14,6 +14,14 @@ layout: default
       <p style="font-family:times;"> Connectomics has been described by <a href="https://vcg.seas.harvard.edu/publications/the-big-data-challenges-of-connectomics/paper">Profs. Lichtman, Pfister, and Shavit</a> as the field concerned with mapping networks of interconnected cells inside a nervous system, at the synaptic level. The field has seen a surge in the amount of available data with advances in electron microscopy producing detail rich 3D models of cellular organelle like neurons. During Spring 2019, I had the fortune to work with such exciting data at Prof. Hanspeter Pfister's lab, the <a href="https://vcg.seas.harvard.edu">Visual Computing Group</a> at Harvard. I worked with nano-scale resolution 3D models of mitochondria and pyramidal neurons and attempted to make a tiny contribution towards shape analysis of these organelle. I'm grateful to my advisors <a href="https://donglaiw.github.io/">Donglai Wei</a> and Zudi Lin for giving me the opportuntiy to work on this project, and for their guidance and patience throughout the project.
 
       <p style="font-family:times;">Understanding the variance in shapes of an organelle like mitochondria may be seen as the first step towards relating shape to biological function. In this project we attempted to answer questions such as: How many types of organelle shapes exist? Can all these shapes be decomposed into simpler primitives? Towards that end, we have developed a simple shape descriptor called the "Reduced Graph", which provides an intuitive picture of complex 3D shapes, and at the same time preserves adequate topological details to be used for shape sensitive tasks such as shape matching and retrieval. we also proposed a nomenclature scheme for our Reduced Graph descriptor. We have submitted our work to a peer reviewed conference and are awaiting feedback. My contribution to the project has been designing and implementing an algorithm for extracting the Reduced Graph from a shape.</p>
+
+      <p style="font-family:times;">This website is organized into three sections:
+      <ol type="1">
+	      <li>This page describes the problem at hand and provides an overview of the proposed solution. </li>
+	      <li>My experiments with existing shape descriptors are described here: <a href="/connectomics-shape-analysis/other-descriptors.html">[Different Shape Descriptors]</a></li>
+	      <li>Our proposed Reduced Graph descriptor, for whose extraction I designed and implemented an algorithm, is described here: <a href="/connectomics-shape-analysis/connectomics-main.html">[Reduced Graph Descriptor]</a></li>
+      </ol>
+      </p>
 
 <h2 id="dataset">Dataset</h2>
 <p style="font-family:times;"> Connectomics is now done at nano-scale resolution, i.e. we can tell apart two points of an organelle which are just a few nanometers (nm) apart. For this project I dealt with typical resolutions of 60nm. One implication of the availability of such high resolution data is that we can now observe never-seen-before details of organelle. Below are two examples of such rich 3D models from the dataset I worked with. </p>
